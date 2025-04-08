@@ -1,0 +1,175 @@
+/* Neon Cyberpunk Aesthetic Upgraded */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+body {
+  background: linear-gradient(135deg, #0d0d0d, #1c1c1c);
+  color: #e0e0e0;
+  font-family: 'Orbitron', sans-serif;
+  margin: 0;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+header {
+    background: 
+      linear-gradient(to bottom, rgba(17,17,17,0.8), rgba(26,26,26,0.95)),
+      url('images/skyline.jpg') center/cover no-repeat;
+    text-align: center;
+    padding: 3rem 1rem;
+    border-bottom: 1px solid #333;
+  }  
+
+header h1 {
+  font-size: 3.2rem;
+  color: #00e6e6;
+  text-shadow: 0 0 10px #00e6e6, 0 0 20px #008080;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  font-size: 1.1rem;
+  color: #bbb;
+}
+
+main {
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+section {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
+  transition: transform 0.3s ease;
+}
+
+section:hover {
+  transform: scale(1.01);
+}
+
+h2 {
+  color: #00ccff;
+  border-bottom: 1px solid #444;
+  padding-bottom: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 1rem;
+}
+
+ul li::before {
+  content: "⟡";
+  color: #00ffff;
+  padding-right: 0.5rem;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: #111;
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 3rem;
+  border-top: 1px solid #333;
+}
+nav {
+    background-color: #111;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #333;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  }
+  
+  .menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+  }
+  
+    .menu li {
+        position: relative;
+        padding: 0.5rem 0; /* Add some vertical space for easier hover */
+      }
+      
+  
+  
+  .menu a {
+    color: #00e6e6;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+  
+  .menu a:hover {
+    color: #00ffff;
+    text-shadow: 0 0 6px #00ffff;
+  }
+  
+  .submenu {
+    display: none;
+    position: absolute;
+    background-color: #1a1a1a;
+    top: 2.5rem;
+    left: 0;
+    padding: 0.5rem 0;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
+    border: 1px solid #333;
+    min-width: 180px;
+  }
+  
+  .submenu li {
+    padding: 0.5rem 1rem;
+  }
+  
+  ..submenu {
+    display: none;
+    position: absolute;
+    background-color: #1a1a1a;
+    top: 2.5rem; /* If needed, adjust this to top: 2.7rem or 3rem */
+    left: 0;
+    padding: 0.5rem 0;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
+    border: 1px solid #333;
+    min-width: 180px;
+    z-index: 1000;
+  }  
+  
+  .dropdown:hover .submenu {
+    display: block;
+  }
+  @keyframes glitch {
+    0% { text-shadow: 0 0 2px #0ff, 0 0 5px #0ff; }
+    20% { text-shadow: -2px 0 red, 2px 0 blue; }
+    40% { text-shadow: 2px 0 red, -2px 0 blue; }
+    60% { text-shadow: 0 0 2px #0ff, 0 0 10px #0ff; }
+    80% { text-shadow: 1px 0 red, -1px 0 blue; }
+    100% { text-shadow: 0 0 2px #0ff, 0 0 5px #0ff; }
+  }
+  
+  header h1 {
+    font-size: 3.2rem;
+    color: #00e6e6;
+    animation: glitch 2.5s infinite;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  
