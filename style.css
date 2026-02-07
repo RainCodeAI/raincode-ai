@@ -63,12 +63,34 @@ body::after {
 }
 
 header {
-  background:
-    linear-gradient(to bottom, rgba(5, 5, 5, 0.6), rgba(8, 10, 12, 0.85)),
-    url('images/skyline.jpg') center/cover no-repeat;
   text-align: center;
   padding: 3.5rem 1rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('images/skyline.jpg') center/cover no-repeat;
+  filter: brightness(0.4) blur(2px);
+  transform: scale(1.05);
+  z-index: 0;
+}
+
+header::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(5, 5, 5, 0.25), rgba(8, 10, 12, 0.6));
+  z-index: 1;
+}
+
+header > * {
+  position: relative;
+  z-index: 2;
 }
 
 header h1 {
@@ -379,6 +401,7 @@ a {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
+  cursor: pointer;
 }
 
 .app-card img {
@@ -431,6 +454,11 @@ a {
   box-shadow: 0 0 16px rgba(0, 246, 255, 0.25), 0 0 32px rgba(0, 246, 255, 0.16);
 }
 
+.app-card:focus-visible {
+  outline: 2px solid rgba(0, 246, 255, 0.8);
+  outline-offset: 3px;
+}
+
 .cta-button {
   display: inline-block;
   background-color: var(--neon);
@@ -463,6 +491,105 @@ a {
   background-color: rgba(0, 246, 255, 0.12);
   color: #dffbff;
   box-shadow: 0 0 16px rgba(0, 246, 255, 0.35);
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 5, 5, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(20px);
+  z-index: 2000;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content {
+  position: relative;
+  background: #050505;
+  border: 1px solid var(--neon);
+  border-radius: 16px;
+  width: min(90vw, 760px);
+  padding: 2rem;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 24px rgba(0, 246, 255, 0.2);
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 246, 255, 0.6);
+  background: rgba(5, 10, 12, 0.8);
+  color: var(--neon-bright);
+  font-family: 'Orbitron', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-close:hover {
+  background: rgba(0, 246, 255, 0.15);
+  box-shadow: 0 0 12px rgba(0, 246, 255, 0.4);
+}
+
+.modal-body {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.modal-logo {
+  width: 140px;
+  max-height: 140px;
+  object-fit: contain;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 246, 255, 0.25);
+  padding: 0.75rem;
+  background: rgba(6, 10, 12, 0.75);
+}
+
+.modal-section h4 {
+  color: var(--neon);
+  margin-bottom: 0.5rem;
+}
+
+.modal-specs {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.modal-specs li {
+  padding-left: 1.2rem;
+  position: relative;
+  color: #d0dbe2;
+}
+
+.modal-specs li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--neon);
+}
+
+.modal-philosophy {
+  color: #cdd9df;
+  margin: 0;
+}
+
+body.modal-open {
+  overflow: hidden;
 }
 
 form {
