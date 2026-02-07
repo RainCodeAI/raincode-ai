@@ -5,60 +5,230 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RainCode AI</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
 </head>
 <body>
-    <nav>
-        <ul class="menu">
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact Us</a></li>
-          <li class="dropdown">
-            <a href="#">Products ▾</a>
-            <ul class="submenu">
-              <li><a href="#">AI Agents</a></li>
-              <li><a href="#">AI Chatbots</a></li>
-              <li><a href="#">Downloadable Projects</a></li>
-            </ul>
-          </li>
-          <li><a href="#">Free Downloads</a></li>
+  <nav>
+    <ul class="menu">
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+      <li><a href="#inquire">Inquire</a></li>
+      <li class="dropdown">
+        <a href="#">Products <span class="menu-caret" aria-hidden="true">▾</span></a>
+        <ul class="submenu">
+          <li><a href="#sovereign">Sovereign Mind</a></li>
+          <li><a href="#market">Market Force</a></li>
+          <li><a href="#sentinel">Sentinel Suite</a></li>
         </ul>
-      </nav>      
+      </li>
+    </ul>
+  </nav>
+
   <header>
     <h1>RainCode AI</h1>
-    <p>Custom AI agents for a synthetic world.</p>
+    <p class="hero-subhead">Adaptive intelligence across mind, market, and security.</p>
+    <div class="hero-actions">
+      <a href="#products" class="cta-button">Explore Our Products</a>
+      <a href="#inquire" class="cta-button secondary">Request Demo</a>
+    </div>
   </header>
 
   <main>
     <section>
       <h2>What We Build</h2>
-      <ul>
-        <li>🧠 Personalized AI Chatbots</li>
-        <li>🤖 Business AI Agents</li>
-        <li>⚡ Downloadable Arduino + AI Projects</li>
-      </ul>
+      <p>We build local-first AI systems that integrate directly into how people work, think, and operate, going beyond chat to deliver real, usable intelligence.</p>
+      <p>Each product is designed as a focused capability from brand identity and growth pipelines to security, perception, and personal intelligence, while remaining part of a cohesive ecosystem.</p>
+      <p>Our tools prioritize privacy, clarity, and intent, helping individuals and organizations turn information into action without noise, friction, or loss of control.</p>
     </section>
-  
-    <section>
-      <h2>Free Downloads</h2>
-      <p>Get started with some of our favorite free tools and projects.</p>
-      <div class="download-buttons">
-        <a href="#" class="glow-btn">🧠 AI Chatbot Starter Kit</a>
-        <a href="#" class="glow-btn">⚡ Arduino Light Controller</a>
-        <a href="#" class="glow-btn">🛠️ Pi Assistant Voice Bot</a>
+
+    <section id="products">
+      <h2>Product Sectors</h2>
+      <p>Three focused lines of AI systems built for modern resilience.</p>
+      <div class="sectors-grid">
+        <div class="sector-card sector-sovereign" id="sovereign">
+          <div class="sector-header">
+            <h3>Sovereign Mind</h3>
+            <p>Introspective companions and cognitive sanctuaries.</p>
+          </div>
+          <div class="app-grid">
+            <div class="app-card">
+              <img src="assets/logos/sage.png?v=20260207" alt="Sage logo">
+              <h4>Sage</h4>
+              <div class="app-chips">
+                <span>Emotional Insight</span>
+                <span>Daily Rhythm</span>
+                <span>Reflection</span>
+              </div>
+              <p>A personal AI companion with memory and emotional intelligence that adapts to you and grows over time.</p>
+            </div>
+            <div class="app-card">
+              <img src="assets/logos/nexus.png?v=20260207" alt="Nexus logo">
+              <h4>Nexus</h4>
+              <div class="app-chips">
+                <span>Memory Graph</span>
+                <span>Recall</span>
+                <span>Synthesis</span>
+              </div>
+              <p>A local-first AI operating system that connects tasks, memory, vision, and action into a single intelligent workflow.</p>
+            </div>
+            <div class="app-card">
+              <img src="assets/logos/haven.png?v=20260207" alt="Haven logo">
+              <h4>Haven</h4>
+              <div class="app-chips">
+                <span>Focus Mode</span>
+                <span>Calm UX</span>
+                <span>Private</span>
+              </div>
+              <p>A calm, private intelligence layer designed for memory, reflection, and continuous personal support.</p>
+            </div>
+            <div class="app-card">
+              <img src="assets/logos/chirovisit.png?v=20260207" alt="ChiroVisit logo">
+              <h4>ChiroVisit</h4>
+              <div class="app-chips">
+                <span>HIPAA</span>
+                <span>Charting</span>
+                <span>Clinical</span>
+              </div>
+              <p>An AI charting assistant that generates accurate, compliant SOAP notes through guided clinical conversations.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="sector-card sector-market" id="market">
+          <div class="sector-header">
+            <h3>Market Force</h3>
+            <p>Revenue intelligence and operational acceleration.</p>
+          </div>
+          <div class="app-grid">
+            <div class="app-card">
+              <img src="assets/logos/alfred.png?v=20260207" alt="Alfred logo">
+              <h4>Alfred</h4>
+              <div class="app-chips">
+                <span>Campaigns</span>
+                <span>Attribution</span>
+                <span>Automation</span>
+              </div>
+              <p>An AI marketing assistant that creates on-brand content, campaigns, and copy across platforms in minutes.</p>
+            </div>
+            <div class="app-card">
+              <img src="assets/logos/pipeline.png?v=20260207" alt="Pipeline logo">
+              <h4>Pipeline</h4>
+              <div class="app-chips">
+                <span>Conversion</span>
+                <span>Funnel Ops</span>
+                <span>Revenue</span>
+              </div>
+              <p>A lead and funnel automation system that turns attention into action and interest into revenue.</p>
+            </div>
+            <div class="app-card">
+              <img src="assets/logos/brandcore.png?v=20260207" alt="BrandCore logo">
+              <h4>BrandCore</h4>
+              <div class="app-chips">
+                <span>Identity</span>
+                <span>Voice</span>
+                <span>Presence</span>
+              </div>
+              <p>A brand intelligence system that defines identity, voice, and positioning to keep messaging consistent and intentional.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="sector-card sector-sentinel" id="sentinel">
+          <div class="sector-header">
+            <h3>Sentinel Suite</h3>
+            <p>Risk detection and protective intelligence at scale.</p>
+          </div>
+          <div class="app-grid">
+            <div class="app-card">
+              <img src="assets/logos/watchtower.png?v=20260207" alt="WatchTower logo">
+              <h4>WatchTower</h4>
+              <div class="app-chips">
+                <span>Access</span>
+                <span>Vision</span>
+                <span>Alerts</span>
+              </div>
+              <p>A face and license plate recognition module that identifies, logs, and alerts on known or flagged entities.</p>
+            </div>
+            <div class="app-card">
+              <img src="assets/logos/lingr.png?v=20260207" alt="Lingr logo">
+              <h4>Lingr</h4>
+              <div class="app-chips">
+                <span>Loitering</span>
+                <span>Behavior</span>
+                <span>Real-time</span>
+              </div>
+              <p>An after-hours loitering detection system that monitors cameras and alerts you to suspicious activity in real time.</p>
+            </div>
+            <div class="app-card">
+              <img src="assets/logos/crowdflow.png?v=20260207" alt="CrowdFlow logo">
+              <h4>CrowdFlow</h4>
+              <div class="app-chips">
+                <span>Density</span>
+                <span>Forecasting</span>
+                <span>Movement</span>
+              </div>
+              <p>A crowd monitoring and movement analysis tool that visualizes density, flow, and congestion in real time.</p>
+            </div>
+            <div class="app-card">
+              <img src="assets/logos/perimeterppe.png?v=20260207" alt="PerimeterPPE logo">
+              <h4>PerimeterPPE</h4>
+              <div class="app-chips">
+                <span>Compliance</span>
+                <span>Zones</span>
+                <span>Safety</span>
+              </div>
+              <p>A computer-vision system that detects safety gear compliance and reduces workplace risk automatically.</p>
+            </div>
+            <div class="app-card">
+              <img src="assets/logos/anomalyalert.png?v=20260207" alt="AnomalyAlert logo">
+              <h4>AnomalyAlert</h4>
+              <div class="app-chips">
+                <span>Sensors</span>
+                <span>Escalation</span>
+                <span>Risk</span>
+              </div>
+              <p>An AI system that detects unusual patterns and events in sensor, video, or operational data.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
-  </main>
-  
 
-    <section>
-      <h2>About RainCode</h2>
-      <p>RainCode AI is an experimental lab creating custom synthetic minds, fusing AI, Arduino, and imagination.</p>
+    <section id="inquire">
+      <h2>Inquire</h2>
+      <p>Interested in a custom AI solution or have a question about our agents? Fill out the form below to get in touch.</p>
+      
+      <form action="mailto:RainCodeAI@proton.me" method="post" enctype="text/plain">
+        <label for="email">Your Email Address:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+        
+        <label for="message">Your Message:</label><br>
+        <textarea id="message" name="message" rows="4" cols="50" required></textarea><br><br>
+        
+        <input type="submit" value="Send Inquiry">
+      </form>
+    </section>
+
+    <section id="about">
+      <h2>About RainCode AI</h2>
+      <p>RainCode AI is an experimental AI studio founded by Avery Miller. From emotional companions to geopolitical signal decoders, we craft synthetic minds that feel, think, and assist. Whether you're a business looking to streamline tasks or a curious explorer of emerging tech, RainCode delivers powerful tools that fuse imagination and intelligence.</p>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Let's build something remarkable. Reach out for custom AI solutions, collaborations, or project inquiries:</p>
+      <ul>
+        <li><strong>Email:</strong> <a href="mailto:RainCodeAI@proton.me">RainCodeAI@proton.me</a></li>
+        <li><strong>X (Twitter):</strong> <a href="https://x.com/RainCodeAI" target="_blank">@RainCodeAI</a></li>
+        <li><strong>Instagram:</strong> <a href="https://instagram.com/raincode.ai" target="_blank">@raincode.ai</a></li>
+        <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/avery-miller-02aa271b7/" target="_blank">Avery Miller</a></li>
+        <li><strong>Location:</strong> Stratford, Ontario, Canada</li>
+      </ul>
     </section>
   </main>
 
   <footer>
-    <p>© 2025 RainCode AI | Built by Avery Miller</p>
+    <p>(c) 2025 RainCode AI | Built by Avery Miller</p>
   </footer>
 </body>
 </html>
-
-  
