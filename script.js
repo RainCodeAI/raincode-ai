@@ -231,8 +231,11 @@ function initContactForm() {
         body: new FormData(form),
       });
       const data = await res.json().catch(() => ({}));
+      // FormSubmit returns HTTP 200 even for non-success states (e.g. needs
+      // activation), so check its actual success flag, not just res.ok.
+      const ok = res.ok && (data.success === true || data.success === "true");
 
-      if (res.ok) {
+      if (ok) {
         setStatus("Thanks! Your message is on its way — we'll reply within one business day.", "success");
         form.reset();
       } else {
