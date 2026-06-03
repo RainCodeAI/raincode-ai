@@ -1,0 +1,15 @@
+# macOS junk (synced via OneDrive)
+.DS_Store
+._*
+
+# Full-resolution logo originals (kept locally, not deployed)
+assets/_originals/
+
+# Local preview / dev tooling
+.claude/
+
+# Editor / OS
+Thumbs.db
+*.swp
+.vscode/
+.idea/
