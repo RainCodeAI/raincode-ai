@@ -90,11 +90,69 @@ function renderApps() {
         <p class="app-card__desc">${app.desc}</p>
         <p class="app-card__built">Built for: <b>${app.builtFor}</b></p>
         <div class="app-card__foot">
-          <a class="app-card__cta" href="${mailto}">Book a Demo <span aria-hidden="true">&rarr;</span></a>
-          <span class="app-card__shot" title="Screenshot coming soon">Preview soon</span>
+          ${app.name === "Frontdesk"
+            ? `<button type="button" class="app-card__cta app-card__cta--try" data-try-frontdesk>Try Frontdesk <span aria-hidden="true">&rarr;</span></button>
+               <a class="app-card__cta" href="${mailto}">Book a Demo <span aria-hidden="true">&rarr;</span></a>`
+            : `<a class="app-card__cta" href="${mailto}">Book a Demo <span aria-hidden="true">&rarr;</span></a>
+               <span class="app-card__shot" title="Screenshot coming soon">Preview soon</span>`}
         </div>
+        ${app.name === "Frontdesk" ? `<p class="frontdesk-status" role="status" aria-live="polite"></p>` : ""}
       </article>`;
   }).join("");
+}
+
+/* ---- Open the installed Frontdesk embed from either CTA ---- */
+function initFrontdeskDemo() {
+  const prompt = "I run a small service business. How can Frontdesk handle customer questions and capture new leads?";
+  let pending = null;
+
+  const openWidget = () => {
+    const shadow = document.getElementById("frontdesk-widget-container")?.shadowRoot;
+    const trigger = shadow?.getElementById("lb-trigger");
+    const input = shadow?.getElementById("lb-input");
+    if (!trigger || !input) return false;
+
+    // The current embed exposes no public open/prefill API. Its open shadow root
+    // lets the site use the same trigger a visitor would click.
+    if (trigger.getAttribute("aria-expanded") !== "true") trigger.click();
+    if (!input.disabled && !input.value.trim()) input.value = prompt;
+    if (!input.disabled) input.focus();
+    return true;
+  };
+
+  document.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-try-frontdesk]");
+    if (!button) return;
+    const status = button.closest(".app-card")?.querySelector(".frontdesk-status")
+      || document.getElementById("frontdeskStatus");
+    if (pending) {
+      pending.observer.disconnect();
+      clearTimeout(pending.timeout);
+      pending.status.textContent = "";
+      pending = null;
+    }
+    status.textContent = "Opening Frontdesk…";
+    if (openWidget()) {
+      status.textContent = "";
+      return;
+    }
+
+    // Bot configuration is fetched asynchronously after widget.js loads.
+    const observer = new MutationObserver(() => {
+      if (!openWidget()) return;
+      observer.disconnect();
+      clearTimeout(timeout);
+      status.textContent = "";
+      pending = null;
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+    const timeout = setTimeout(() => {
+      observer.disconnect();
+      status.textContent = "Frontdesk is unavailable right now. Please use Book a Demo to contact us.";
+      pending = null;
+    }, 10000);
+    pending = { observer, timeout, status };
+  });
 }
 
 /* ---- Scroll reveal ----
@@ -253,6 +311,7 @@ function initContactForm() {
 /* ---- Init ---- */
 document.addEventListener("DOMContentLoaded", () => {
   renderApps();
+  initFrontdeskDemo();
   initReveal();
   initNav();
   initScrollSpy();
