@@ -14,6 +14,7 @@ const APPS = [
     tagline: "Never miss another customer inquiry.",
     desc: "An embeddable AI chat widget that answers customer questions, qualifies leads, and keeps potential clients engaged automatically — set up once, working 24/7 without you online.",
     builtFor: "Local businesses, contractors, clinics, agencies & service companies",
+    video: "_jMp_eVAXaE", // YouTube video ID
   },
   {
     name: "Quill",
@@ -77,6 +78,9 @@ function renderApps() {
     const icon = app.logo
       ? `<div class="app-card__icon app-card__icon--img" aria-hidden="true"><img src="${app.logo}" alt="" loading="lazy" onerror="this.parentElement.classList.remove('app-card__icon--img');this.parentElement.textContent='${app.initial}';"></div>`
       : `<div class="app-card__icon" aria-hidden="true">${app.initial}</div>`;
+    const watch = app.video
+      ? `<button type="button" class="app-card__cta app-card__cta--watch" data-video="${app.video}" data-video-title="${app.name} demo"><span aria-hidden="true">&#9654;</span> Watch demo</button>`
+      : "";
     return `
       <article class="app-card reveal" style="--accent:${app.accent}">
         <span class="app-card__idx" aria-hidden="true">${idx}</span>
@@ -92,9 +96,10 @@ function renderApps() {
         <div class="app-card__foot">
           ${app.name === "Frontdesk"
             ? `<button type="button" class="app-card__cta app-card__cta--try" data-try-frontdesk>Try Frontdesk <span aria-hidden="true">&rarr;</span></button>
+               ${watch}
                <a class="app-card__cta" href="${mailto}">Book a Demo <span aria-hidden="true">&rarr;</span></a>`
             : `<a class="app-card__cta" href="${mailto}">Book a Demo <span aria-hidden="true">&rarr;</span></a>
-               <span class="app-card__shot" title="Screenshot coming soon">Preview soon</span>`}
+               ${watch || `<span class="app-card__shot" title="Demo video coming soon">Preview soon</span>`}`}
         </div>
         ${app.name === "Frontdesk" ? `<p class="frontdesk-status" role="status" aria-live="polite"></p>` : ""}
       </article>`;
@@ -152,6 +157,33 @@ function initFrontdeskDemo() {
       pending = null;
     }, 10000);
     pending = { observer, timeout, status };
+  });
+}
+
+/* ---- Demo video modal (one shared <dialog> for every card) ---- */
+function initVideoModal() {
+  const modal = document.getElementById("videoModal");
+  const frame = document.getElementById("videoModalFrame");
+  if (!modal || !frame || typeof modal.showModal !== "function") return;
+
+  document.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-video]");
+    if (!button) return;
+    const id = encodeURIComponent(button.dataset.video);
+    // The iframe is only created on open, so YouTube loads nothing until a visitor asks.
+    frame.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1"
+      title="${button.dataset.videoTitle || "Demo video"}"
+      allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
+    modal.showModal();
+  });
+
+  // Clicking the dimmed backdrop (the dialog itself, outside its panel) closes it.
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) modal.close();
+  });
+  // Esc, the close button, and backdrop clicks all land here: remove the iframe to stop playback.
+  modal.addEventListener("close", () => {
+    frame.innerHTML = "";
   });
 }
 
@@ -312,6 +344,7 @@ function initContactForm() {
 document.addEventListener("DOMContentLoaded", () => {
   renderApps();
   initFrontdeskDemo();
+  initVideoModal();
   initReveal();
   initNav();
   initScrollSpy();

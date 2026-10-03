@@ -457,6 +457,47 @@ h4 { font-size: 0.95rem; }
   padding: 4px 9px; border-radius: 5px;
 }
 
+.app-card__cta--watch { color: var(--text); }
+.app-card__cta--watch span { color: var(--accent); font-size: 0.75em; }
+
+/* ---------- Demo video modal ---------- */
+.video-modal {
+  /* Size by height too, so the 16:9 frame plus close button always fits the viewport */
+  width: min(960px, calc(100vw - 32px), calc((100vh - 120px) * 16 / 9));
+  max-width: none;
+  margin: auto; /* the global reset zeroes dialog's default centering margin */
+  padding: 48px 0 0;
+  border: 0;
+  background: transparent;
+  overflow: visible;
+}
+.video-modal::backdrop {
+  background: rgba(3, 5, 10, 0.82);
+  backdrop-filter: blur(6px);
+}
+.video-modal__panel { position: relative; }
+.video-modal__frame {
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #000;
+  border: 1px solid var(--border-strong);
+  box-shadow: 0 30px 80px -20px rgba(34, 211, 238, 0.35);
+}
+.video-modal__frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+.video-modal__close {
+  position: absolute;
+  top: -44px; right: 0; /* sits in the dialog's top padding */
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  background: var(--panel-strong);
+  color: var(--text);
+  font-size: 1.4rem; line-height: 1;
+  cursor: pointer;
+}
+.video-modal__close:hover { border-color: var(--teal); color: var(--teal); }
+
 /* ---------- AI setup and integration ---------- */
 .integration__grid {
   display: grid;
