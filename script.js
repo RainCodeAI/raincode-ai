@@ -24,6 +24,7 @@ const APPS = [
     tagline: "Professional quotes without the paperwork.",
     desc: "Turn rough job notes into polished estimates, branded PDFs, and client-ready proposals in minutes. Generate, edit, send, and track quotes without losing hours to paperwork.",
     builtFor: "Contractors, landscapers, HVAC, roofing, electricians & plumbers",
+    video: "kNlxZ_qiTcw", // YouTube video ID
   },
   {
     name: "Replo",
