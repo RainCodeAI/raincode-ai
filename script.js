@@ -7,16 +7,6 @@
 /* ---- App data: one object per product = reusable card component ---- */
 const APPS = [
   {
-    name: "Frontdesk",
-    accent: "var(--c-frontdesk)",
-    initial: "F",
-    logo: "assets/logos/frontdesk.png",
-    tagline: "Never miss another customer inquiry.",
-    desc: "An embeddable AI chat widget that answers customer questions, qualifies leads, and keeps potential clients engaged automatically — set up once, working 24/7 without you online.",
-    builtFor: "Local businesses, contractors, clinics, agencies & service companies",
-    video: "_jMp_eVAXaE", // YouTube video ID
-  },
-  {
     name: "Quill",
     accent: "var(--c-quill)",
     initial: "Q",
@@ -25,42 +15,21 @@ const APPS = [
     desc: "Turn rough job notes into polished estimates, branded PDFs, and client-ready proposals in minutes. Generate, edit, send, and track quotes without losing hours to paperwork.",
     builtFor: "Contractors, landscapers, HVAC, roofing, electricians & plumbers",
     video: "kNlxZ_qiTcw", // YouTube video ID
+    signup: "https://rainquill.app/signup",
+    action: "Get started with Quill",
   },
   {
-    name: "Replo",
-    accent: "var(--c-replo)",
-    initial: "R",
-    logo: "assets/logos/replo.png",
-    tagline: "Stay responsive without living in your reviews tab.",
-    desc: "Syncs incoming Google reviews and drafts polished AI responses for you to approve and publish from one dashboard — stay professional and responsive without the manual grind.",
-    builtFor: "Restaurants, clinics, salons, gyms, contractors & retail shops",
-  },
-  {
-    name: "Relay",
-    accent: "var(--c-relay)",
-    initial: "R",
-    logo: "assets/logos/relay.png",
-    tagline: "No more missed handoffs or end-of-shift chaos.",
-    desc: "Staff scan a QR code, enter a PIN, and submit a structured shift note. Relay organizes handoffs with AI, flags urgent issues, and sends owners a daily operational briefing.",
-    builtFor: "Restaurants, retail, gyms, warehouses & clinics with rotating staff",
-  },
-  {
-    name: "ExecFlow",
-    accent: "var(--c-execflow)",
-    initial: "E",
-    logo: "assets/logos/execflow.png",
-    tagline: "Your executive assistant, without the payroll.",
-    desc: "Cuts admin overload with inbox triage, AI-assisted email drafting, scheduling support, calendar coordination, reminders, and executive-style daily summaries.",
-    builtFor: "Founders, consultants, contractors & agencies",
-  },
-  {
-    name: "SiteAssist",
-    accent: "var(--c-siteassist)",
-    initial: "S",
-    logo: "assets/logos/siteassist.png",
-    tagline: "Run the field without drowning in admin.",
-    desc: "Manages job intake, estimate drafting, scheduling, reminders, follow-ups, invoice prep, lead capture, and voice/photo field notes in one streamlined workflow.",
-    builtFor: "Contractors, landscaping & field-service businesses with mobile crews",
+    name: "Frontdesk",
+    accent: "var(--c-frontdesk)",
+    initial: "F",
+    logo: "assets/logos/frontdesk.png",
+    tagline: "Answer website inquiries while you're on the job.",
+    desc: "An embeddable AI chat widget that answers questions from your business information, captures leads, and directs visitors to your booking link — even outside business hours.",
+    builtFor: "Contractors, trades & local service businesses",
+    video: "_jMp_eVAXaE", // YouTube video ID
+    signup: "https://frontdesk-eight.vercel.app/signup",
+    action: "Start Frontdesk's 14-day trial",
+    note: "No card required. Trial usage limits apply.",
   },
 ];
 
@@ -88,19 +57,20 @@ function renderApps() {
         <div class="app-card__top">
           ${icon}
           <div>
-            <div class="app-card__name">${app.name}</div>
+            <h3 class="app-card__name">${app.name} <span class="app-card__status">Live</span></h3>
             <div class="app-card__tag">${app.tagline}</div>
           </div>
         </div>
         <p class="app-card__desc">${app.desc}</p>
         <p class="app-card__built">Built for: <b>${app.builtFor}</b></p>
         <div class="app-card__foot">
-          ${app.name === "Frontdesk"
-            ? `<button type="button" class="app-card__cta app-card__cta--try" data-try-frontdesk>Try Frontdesk <span aria-hidden="true">&rarr;</span></button>
-               ${watch}
-               <a class="app-card__cta" href="${mailto}">Book a Demo <span aria-hidden="true">&rarr;</span></a>`
-            : `<a class="app-card__cta" href="${mailto}">Book a Demo <span aria-hidden="true">&rarr;</span></a>
-               ${watch || `<span class="app-card__shot" title="Demo video coming soon">Preview soon</span>`}`}
+          <a class="app-card__cta app-card__cta--try" href="${app.signup}">${app.action} <span aria-hidden="true">&rarr;</span></a>
+          ${watch}
+        </div>
+        ${app.note ? `<p class="app-card__note">${app.note}</p>` : ""}
+        <div class="app-card__secondary">
+          ${app.name === "Frontdesk" ? `<button type="button" class="app-card__cta" data-try-frontdesk>Try the live demo <span aria-hidden="true">&rarr;</span></button>` : ""}
+          <a class="app-card__cta" href="${mailto}">Book a Demo <span aria-hidden="true">&rarr;</span></a>
         </div>
         ${app.name === "Frontdesk" ? `<p class="frontdesk-status" role="status" aria-live="polite"></p>` : ""}
       </article>`;
@@ -288,6 +258,12 @@ function initContactForm() {
   if (!form) return;
   const status = document.getElementById("cfStatus");
   const submit = document.getElementById("cfSubmit");
+
+  document.querySelectorAll("[data-rainagent-interest]").forEach((link) => {
+    link.addEventListener("click", () => {
+      document.getElementById("cf-app").value = "RainAgent";
+    });
+  });
 
   const setStatus = (msg, type) => {
     status.textContent = msg;

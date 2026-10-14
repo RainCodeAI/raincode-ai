@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>RainCode AI social preview source — 1200 × 630</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #070a12; color: #eef2f8; font-family: Inter, sans-serif; }
+    .preview { position: relative; width: 1200px; height: 630px; overflow: hidden; padding: 52px 60px; }
+    .skyline { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .18; }
+    .wash { position: absolute; inset: 0; background: linear-gradient(90deg, #070a12 8%, #070a12d9 55%, #070a1255), radial-gradient(ellipse at 88% 35%, #3b82f64d, transparent 65%); }
+    .grid { position: absolute; inset: 0; background-image: linear-gradient(#22d3ee08 1px, transparent 1px), linear-gradient(90deg, #22d3ee08 1px, transparent 1px); background-size: 48px 48px; }
+    .brand { position: relative; display: flex; align-items: center; gap: 13px; font-size: 32px; font-weight: 800; letter-spacing: -1px; }
+    .mark { width: 34px; height: 34px; border-radius: 10px; background: conic-gradient(from 140deg, #22d3ee, #3b82f6, #a78bfa, #22d3ee); box-shadow: 0 0 22px #22d3ee55; }
+    .brand em { color: #22d3ee; font-style: normal; margin-left: 5px; }
+    .copy { position: relative; width: 600px; margin-top: 56px; }
+    .eyebrow { color: #22d3ee; font-size: 13px; font-weight: 600; letter-spacing: 2.6px; text-transform: uppercase; }
+    h1 { font-family: 'Space Grotesk', Inter, sans-serif; font-size: 62px; letter-spacing: -2.5px; line-height: 1.07; margin: 22px 0; }
+    h1 span { background: linear-gradient(100deg, #22d3ee, #6b9aff); background-clip: text; -webkit-text-fill-color: transparent; }
+    .sub { font-size: 21px; line-height: 1.6; color: #aeb8c8; margin: 0; }
+    .footer { position: absolute; bottom: 43px; left: 60px; right: 60px; display: flex; align-items: center; justify-content: space-between; color: #aeb8c8; font-size: 15px; }
+    .footer b { font-weight: 500; color: #eef2f8; }
+    .demo { position: absolute; top: 118px; right: 60px; width: 405px; border: 1px solid #6783ae55; border-radius: 24px; background: linear-gradient(145deg, #14243bed, #0a101ded); padding: 26px; box-shadow: 0 24px 80px #0008, 0 0 65px #3b82f614; }
+    .demo-head { display: flex; gap: 17px; align-items: center; }
+    .logo { width: 76px; height: 76px; border-radius: 18px; }
+    h2 { font-family: 'Space Grotesk', sans-serif; font-size: 32px; margin: 0 0 5px; letter-spacing: -1px; }
+    .demo-head p { margin: 0; font-size: 14px; color: #aeb8c8; }
+    .flow { margin-top: 26px; border-top: 1px solid #ffffff16; padding-top: 22px; }
+    .label { color: #7b899e; text-transform: uppercase; letter-spacing: 1.8px; font-size: 11px; font-weight: 600; }
+    .notes { font-size: 16px; color: #c2ccdb; margin: 10px 0; }
+    .arrow { color: #22d3ee; font-size: 26px; margin: 11px 0; }
+    .quote { background: #eef2f8; color: #101b2d; border-radius: 10px; padding: 18px 20px; }
+    .quote strong { display: block; font-size: 18px; letter-spacing: -.4px; }
+    .quote span { font-size: 12px; color: #54647b; display: block; margin-top: 6px; }
+    .lines { display: flex; gap: 7px; margin-top: 15px; }
+    .lines i { height: 4px; width: 65%; border-radius: 2px; background: #3b82f630; }
+    .lines i:last-child { width: 22%; background: #3b82f66b; }
+    .watch { display: flex; align-items: center; gap: 12px; margin-top: 22px; color: #7be6ff; font-size: 16px; font-weight: 600; }
+    .play { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; border: 1px solid #22d3ee55; font-size: 12px; padding-left: 2px; }
+  </style>
+</head>
+<body>
+  <!-- Render this fixed-size source to raincode-ai-preview.png with a 1200 × 630 viewport. -->
+  <main class="preview">
+    <img class="skyline" src="../../images/skyline.jpg" alt="" />
+    <div class="wash"></div><div class="grid"></div>
+    <div class="brand"><span class="mark"></span><span>RainCode<em>AI</em></span></div>
+    <div class="copy">
+      <div class="eyebrow">Practical AI for small business</div>
+      <h1>Less paperwork.<br /><span>More time for<br />the real work.</span></h1>
+      <p class="sub">Professional quotes. Website inquiries handled.<br />Built for trades &amp; service businesses.</p>
+    </div>
+    <section class="demo" aria-label="Quill demo">
+      <div class="demo-head"><img class="logo" src="../logos/quill.png" alt="Quill" /><div><h2>Quill</h2><p>Your quoting co-pilot</p></div></div>
+      <div class="flow"><div class="label">From job notes</div><p class="notes">Scope, materials, labour.</p><div class="arrow">↓</div>
+        <div class="quote"><strong>Professional quote</strong><span>Branded PDF · Ready for your client</span><div class="lines"><i></i><i></i></div></div>
+      </div>
+      <div class="watch"><span class="play">▶</span>Watch the Quill demo</div>
+    </section>
+    <div class="footer"><b>Quill + Frontdesk</b><span>raincodeai.ca</span></div>
+  </main>
+</body>
+</html>
